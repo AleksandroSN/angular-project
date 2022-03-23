@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 @Component({
   selector: "app-test",
@@ -9,8 +9,13 @@ export class TestComponent implements OnInit {
   title = "Angular Material Demo";
   count = 0;
 
+  @Input()
+  text = "TEST";
+
+  @Output() testOut = new EventEmitter<string>();
+
   ngOnInit(): void {
-    console.log("INIT");
+    this.testOutput();
   }
 
   updateTitle(evt: Event): string {
@@ -23,5 +28,9 @@ export class TestComponent implements OnInit {
 
   increase(): void {
     this.count++;
+  }
+
+  testOutput() {
+    this.testOut.emit("AAAAAAA");
   }
 }

@@ -7,10 +7,10 @@ import { MatSliderModule } from "@angular/material/slider";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
-import { TestComponent } from "@app/components";
+import { TestComponent, TestDirective } from "@app/components";
 
 @NgModule({
-  declarations: [AppComponent, TestComponent],
+  declarations: [AppComponent, TestComponent, TestDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,

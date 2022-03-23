@@ -7,8 +7,8 @@
   <mat-slider min="1" max="100" step="1" value="50" class="slider"></mat-slider>
 </div>
 <section class="counter">
-  <div class="example-label">You click is {{count}} times</div>
+  <div appTest class="example-label">You click is {{count}} times</div>
   <div class="example-button-row">
-    <button mat-button color="primary" (click)="increase()">Primary</button>
+    <button mat-raised-button color="primary" (click)="increase()">Primary</button>
   </div>
 </section>
