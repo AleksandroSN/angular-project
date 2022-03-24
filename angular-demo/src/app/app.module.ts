@@ -12,6 +12,7 @@ import {
   HeroDetailComponent,
   HeroesComponent,
   MessagesComponent,
+  DashboardComponent,
 } from "@app/components";
 
 @NgModule({
@@ -20,6 +21,7 @@ import {
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
