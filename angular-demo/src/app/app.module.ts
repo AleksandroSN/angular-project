@@ -3,10 +3,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatSliderModule } from "@angular/material/slider";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { MatButtonModule } from "@angular/material/button";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
@@ -18,6 +14,7 @@ import {
   HeroSearchComponent,
 } from "@app/components";
 import { InMemoryDataService } from "@app/services";
+import { SharedModule } from "@shared/modules";
 
 @NgModule({
   declarations: [
@@ -33,10 +30,7 @@ import { InMemoryDataService } from "@app/services";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
+    SharedModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,

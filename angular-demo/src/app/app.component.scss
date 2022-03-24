@@ -41,22 +41,38 @@ button:disabled {
   cursor: auto;
 }
 
-nav a {
-  padding: 1rem;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #e8e8e8;
-  color: #3d3d3d;
-  border-radius: 4px;
+nav {
+  display: flex;
+  gap: 0.5rem;
+
+  & a {
+    padding: 1rem;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #e8e8e8;
+    color: #3d3d3d;
+    border-radius: 4px;
+
+    &:hover {
+      color: white;
+      background-color: #42545c;
+    }
+
+    &.active {
+      background-color: black;
+    }
+  }
 }
 
-nav a:hover {
-  color: white;
-  background-color: #42545c;
-}
-nav a.active {
-  background-color: black;
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 * {
