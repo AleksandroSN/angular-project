@@ -6,7 +6,7 @@ import { Hero } from "@shared";
   providedIn: "root",
 })
 export class InMemoryDataService implements InMemoryDbService {
-  createDb(): Hero[] {
+  createDb() {
     const heroes: Hero[] = [
       { id: 11, name: "Dr Nice" },
       { id: 12, name: "Narco" },
@@ -19,7 +19,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 19, name: "Magma" },
       { id: 20, name: "Tornado" },
     ];
-    return heroes;
+    return { heroes };
   }
 
   genId(heroes: Hero[]): number {

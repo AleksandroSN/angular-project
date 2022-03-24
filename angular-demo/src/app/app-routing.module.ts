@@ -12,12 +12,12 @@ const routes: Routes = [
     component: HeroesComponent,
   },
   {
-    path: "dashboard",
-    component: DashboardComponent,
-  },
-  {
     path: "heroes/:id",
     component: HeroDetailComponent,
+  },
+  {
+    path: "dashboard",
+    component: DashboardComponent,
   },
   {
     path: "",

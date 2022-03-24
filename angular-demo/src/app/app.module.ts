@@ -15,6 +15,7 @@ import {
   HeroesComponent,
   MessagesComponent,
   DashboardComponent,
+  HeroSearchComponent,
 } from "@app/components";
 import { InMemoryDataService } from "@app/services";
 
@@ -25,6 +26,7 @@ import { InMemoryDataService } from "@app/services";
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
+    HeroSearchComponent,
   ],
   imports: [
     FormsModule,

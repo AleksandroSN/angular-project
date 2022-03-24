@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HEROES } from "./hero.mocks";
+// import { HEROES } from "./hero.mocks";
 import { Hero } from "@shared";
-import { catchError, Observable, of, tap } from "rxjs";
+import { catchError, map, Observable, of, tap } from "rxjs";
 import { MessageService } from "../messages";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
@@ -31,29 +31,55 @@ export class HeroService {
     };
   }
 
-  getHeroes(): Observable<Hero[]> {
-    const heroes = of(HEROES);
-    this.log("fetched heroes");
-    return heroes;
-  }
+  // getHeroes(): Observable<Hero[]> {
+  //   const heroes = of(HEROES);
+  //   this.log("fetched heroes");
+  //   return heroes;
+  // }
 
-  getHero(id: number): Observable<Hero> {
-    const hero = HEROES.find((hero) => hero.id === id)!;
-    this.log(`fetched hero id=${id}`);
-    return of(hero);
-  }
-  getHeroesFromHttp(): Observable<Hero[]> {
+  // getHero(id: number): Observable<Hero> {
+  //   const hero = HEROES.find((hero) => hero.id === id)!;
+  //   this.log(`fetched hero id=${id}`);
+  //   return of(hero);
+  // }
+  getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl).pipe(
       tap((_) => this.log("fetched heroes")),
       catchError(this.handleError<Hero[]>("get heroes", []))
     );
   }
 
-  getHeroFromHttp(id: number): Observable<Hero> {
+  getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
       tap((_) => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))
+    );
+  }
+
+  getHeroNo404(id: number): Observable<Hero> {
+    const url = `${this.heroesUrl}/?id=${id}`;
+    return this.http.get<Hero[]>(url).pipe(
+      map((heroes) => heroes[0]),
+      tap((h) => {
+        const outcome = h ? "fetched" : "did not find";
+        this.log(`${outcome} hero id=${id}`);
+      }),
+      catchError(this.handleError<Hero>(`getHero id=${id}`))
+    );
+  }
+
+  searchHeroes(term: string): Observable<Hero[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+      tap((x) =>
+        x.length
+          ? this.log(`found heroes matching "${term}"`)
+          : this.log(`no heroes matching "${term}"`)
+      ),
+      catchError(this.handleError<Hero[]>("searchHeroes", []))
     );
   }
 
