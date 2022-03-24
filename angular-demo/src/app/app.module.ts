@@ -8,12 +8,15 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import {
   HeroDetailComponent,
   HeroesComponent,
   MessagesComponent,
   DashboardComponent,
 } from "@app/components";
+import { InMemoryDataService } from "@app/services";
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import {
     DashboardComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -31,7 +35,10 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      dataEncapsulation: false,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
