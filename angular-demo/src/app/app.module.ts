@@ -7,10 +7,20 @@ import { MatSliderModule } from "@angular/material/slider";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
-import { TestComponent, TestDirective } from "@app/components";
+import { FormsModule } from "@angular/forms";
+import {
+  HeroDetailComponent,
+  HeroesComponent,
+  MessagesComponent,
+} from "@app/components";
 
 @NgModule({
-  declarations: [AppComponent, TestComponent, TestDirective],
+  declarations: [
+    AppComponent,
+    HeroesComponent,
+    HeroDetailComponent,
+    MessagesComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,6 +29,7 @@ import { TestComponent, TestDirective } from "@app/components";
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

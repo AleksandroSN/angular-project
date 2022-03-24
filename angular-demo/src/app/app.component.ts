@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  title = "angular-demo";
+  title = "Tour of Heroes";
 
   outputResult(text: string) {
     console.log(text);
